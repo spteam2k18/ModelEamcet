@@ -11,6 +11,7 @@ import { GridComponent } from './grid/grid.component';
 import { CountdownModule } from 'ngx-countdown';
 import { HomeComponent } from './home/home.component';
 import { InstructionsComponent } from './instructions/instructions.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -20,13 +21,15 @@ import { InstructionsComponent } from './instructions/instructions.component';
     GridComponent,
     HomeComponent,
     InstructionsComponent
+    
   ],
   imports: [ 
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    CountdownModule
+    CountdownModule,
+    HttpClientModule
     
     
   ],
