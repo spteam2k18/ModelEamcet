@@ -2,124 +2,191 @@
     (start)="onStart()"
     (finished)="onFinished()"
     (notify)="onNotify($event)"></countdown> -->
-    <!-- <h1>{{TextFile}}</h1> -->
-    
-    
 
 
-    <p  style="color:red;" > {{done}}</p>
 
-<div id = "idgrid">
-  <div id = "sudgrid1">
-    <!-- ------------------------- grid 1  -->
-    <div>
-        <input type="button" class="button buttonblue" value="first 30 || physics" (click)="set(0)">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="button" class="button buttonblue" value="second 30 || chemistry" (click)="set(31)">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="button" class="button buttonblue" value="last 30 || maths" (click)="set(61)">   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-        
-    <p style="color:red;" > Remaining Time left : 
-      <countdown [config]="{leftTime: 125, notify: [ 120, 60 ]}" (start)="onStart()" (finished)="onFinished()" (notify)="onNotify($event)">$!m!:$!s!</countdown>
-  </p>
-        <ul>
-            <li><p style="color:white;" > &nbsp;&nbsp;&nbsp; Mock EAMCET By Usha Rama College of Engineering And Technology</p></li>
+
+
+
+
+
+
+    <div id = "idgrid">
+      <div id = "sudgrid1">
+        <!-- ------------------------- grid 1  -->
+        <div>
           
-        </ul>
-      
-      <br><br>
-    </div>
-    <!--  ------------------------- grid 1  -->
-    <!--  ------------------------- grid 2  -->
-    <div>
-
-      <div >
-
-        
-        
-          <br><br>
-          <p style="color:rgb(21, 250, 0);" > Question Number : {{Current_Showing+1}}</p>
-          <br>
-      <img  align="center"  class="question_image" src={{question_images[Current_Showing]}}>
-      <br><br>
-      <br>
-      <form [formGroup]="form">
-        <input type="radio" formControlName="response" value="A" > Option 1  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="radio" formControlName="response" value="B"> Option 2   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="radio" formControlName="response" value="C"> Option 3   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="radio" formControlName="response" value="D"> Option 4   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-      </form>
-     
-      </div>
-    </div>
-    <!--  ------------------------- grid 2  -->
-    <!--  ------------------------- grid 3  -->
-    <div>
-        <br>
-        <input type="button" class="button buttonblue" (click)="clearform()" value="Clear response" >   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="button" class="button buttonblue" (click)="mark_review()" value="Mark for review" > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <!-- save and next != 10   -->
-        <input *ngIf="Current_Showing == 9" type="button" class="button buttonblue" (click)="saveAll()" value="Submit" >   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-        <input *ngIf="Current_Showing != 9" type="button" class="button buttonblue" (click)="next()" value="Next" >   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input *ngIf="Current_Showing != 9" type="button" class="button buttonblue" (click)="saveandnext()" value="Save And Next" >   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-        <input *ngIf="Current_Showing != 0" type="button" class="button buttonblue" (click)="prev()" value="Previous Question" >   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-    </div>
-    <!--  ------------------------- grid 3  -->
-  </div>
-  <div>
-    <div id = "subgrid2">
-      <!--  ------------------------- grid 4  -->
-      <div>
-
-          &nbsp;&nbsp;<img src="../../assets/profile imge.png" style="height:100px; weight:80px" >
-          <!-- <p>G.jaya krishna  </p> -->
-
-      </div>
-      <!--  ------------------------- grid 4  -->
-      <!--  ------------------------- grid 5  -->
-      <div>
-        <!-- <p>colourfull icons   </p> -->
-          &nbsp;&nbsp;<img src="../../assets/inst.png" style="height:200px; weight:100px" >
-
-      </div>
-      <!--  ------------------------- grid 5  -->
-      <!--  ------------------------- grid 6  -->
-      <div class="div6">
-        <!-- Here clip art working with scrooling and onclick event -->
-
-          <li *ngFor="let ques of question_status; index as i">
-              <!-- {{i+1}} is :{{ ques }} -->
-
+          <div id  = "mainHead">
+              MOCK EAMCET
+          </div>
+          <div id = "time"> 
+              Time left : 
+              <countdown [config]="{leftTime: 5400, notify: [ 120, 60 ]}" (start)="onStart()" (finished)="onFinished()" (notify)="onNotify($event)">
+                $!h!:$!m!:$!s!
+              </countdown>
+          </div>
+    
+          <div id = "tabs">
+            
+            <input type="button" class="tabbtn"  value="physics" (click)="set(0)">  
+            <input type="button" class = "tabbtn" value="chemistry" (click)="set(30)">  
+            <input type="button" class = "tabbtn" value="maths" (click)="set(85)">   
+          </div>
+          <div id = "type">
+            Question type MCQ
+          </div>
+          <div id = "view">
+            <div id = "name">
+            view in 
+            <select name="English">
+                <option value="English">English</option>
+              </select>
+            </div>
+          </div>
+          <div> Question Number : {{Current_Showing+1}}</div>
+            
+          
+          
+        </div>
+        <!--  ------------------------- grid 1  -->
+        <!--  ------------------------- grid 2  -->
+        <div>
+    
+          <div>
+    
+            
+            
               
-
-
-              <button>{{i}}</button>
-            </li>
+           <br>  
+        <div id = "img">
+          <img  align="center"  class="question_image" src={{question_images[Current_Showing]}}>
+        </div>
+         
+          <br>
+          <form [formGroup]="form">
+            <input type="radio" formControlName="response" value="1" > 1 <br>
+            <input type="radio" formControlName="response" value="2"> 2  <br>
+            <input type="radio" formControlName="response" value="3"> 3  <br>
+            <input type="radio" formControlName="response" value="4"> 4  
+          </form>
+         
+          </div>
+        </div>
+        <!--  ------------------------- grid 2  -->
+        <!--  ------------------------- grid 3  -->
+        <div>
+            <br>
+            <!-- <input type="button" class="button buttonblue" (click)="clearform()" value="Clear response" >   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+           <div id = "sub">
+             <div>
+           
+          
+            <input type="button" class="btn " (click)="mark_review()" value="Mark for review" > &nbsp;
+            <input type="button" class="btn" (click)="clearform()" value="Clear response" >   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             
-            <li *ngFor="let ques of question_response; index as i">
-               <p style="color: red;" > {{i+1}} is :{{ ques }}</p>
-              </li>
-            
+          </div>
+          <div>
+            <!-- save and next != 10   -->
+          
+           
+    
+            <input *ngIf="Current_Showing != 89" type="button" class="button buttonblue sub" (click)="next()" value="Next" >   
+            <input *ngIf="Current_Showing != 89" type="button" class="button buttonblue sub" (click)="saveandnext()" value="Save And Next" >   
+            <input  *ngIf="Current_Showing == 89" type="button" class="button1 buttonblue" (click)="save()" value="save" > 
 
-        
+          
+          </div>
+          </div>
+        </div>
+        <!--  ------------------------- grid 3  -->
       </div>
-
-      
-      <!--  ------------------------- grid 6  -->
-    </div>
-  </div>
-  </div>
-
-
-
-
-
-
-
-<!-- <p>Form value: {{ form.value | json }}</p> 
-
-<h1> ans 
-  {{user_response}}
-</h1> -->
+      <div>
+        <div id = "subgrid2">
+          <!--  ------------------------- grid 4  -->
+          <div>
+    
+             
+              <div id = "cut2">
+                <div>
+                    &nbsp;&nbsp;
+              <img src="../../assets/profile imge.png" style="height:100px; weight:80px" >
+            </div>
+            <div>
+              Jhon Smit
+            </div>
+          </div>
+            <div>
+              <!-- display what is what -->
+              <div id = "cut2">
+                <div id = "tell">
+                  <div id  = "Answered">0</div>
+                  <div>Answered</div>
+                </div>
+                <div id = "tell">
+                  <div id = "notAnswered">1</div>
+                  <div>Not Answered
+                    <br>
+                    <br>
+                  </div>
+                  
+                </div>
+                <div id = "tell">
+                  <div id = "notVisited">79</div>
+                  <div>Not Visted</div>
+                </div>
+                <div id = "tell">
+                  <div id = "mark_review">0</div>
+                  <div>Marked for review</div>
+                </div>
+    
+              </div>
+              <div id = "tell">
+                  <div id = "Ansmark">0</div>
+                  <div>Answered & Mark for review</div>
+                </div>
+            </div>
+            
+              <!-- <p>G.jaya krishna  </p> -->
+    
+          </div>
+          <!--  ------------------------- grid 4  -->
+          <!--  ------------------------- grid 5  -->
+          <div>
+           
+          </div>
+          <!--  ------------------------- grid 5  -->
+          <!--  ------------------------- grid 6  -->
+          <div class="div6">
+            <!-- Here clip art working with scrooling and onclick event -->
+    
+              <li *ngFor="let ques of question_status; index as i">
+                  <!-- {{i+1}} is :{{ ques }} -->
+                  <button>{{i}}</button>
+                </li>
+                
+                <li *ngFor="let ques of question_response; index as i">
+                   <p style="color: red;" > {{i+1}} is :{{ ques }}</p>
+                  </li>
+                
+            
+          </div>
+          <div id = "cen">
+          <input  type="button" class="button1 buttonblue" (click)="saveAll()" value="Submit" > 
+        </div>
+          <!--  ------------------------- grid 6  -->
+        </div>
+      </div>
+      </div>
+    
+    
+    
+    
+    
+    
+    
+    <!-- <p>Form value: {{ form.value | json }}</p> 
+    
+    <h1> ans 
+      {{user_response}}
+    </h1> -->
