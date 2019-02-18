@@ -1,0 +1,50 @@
+#idgrid{
+    display: grid;
+    grid-template-columns: 70% 30%;
+}
+#sudgrid1{
+    height: 90vh;
+    display: grid;
+    grid-template-rows: 10% 80% 10%;
+}
+#subgrid2{
+    height: 90vh;
+    display: grid;
+    grid-template-rows: 20% 40% 40%;
+}
+.question_image{
+
+    height: 300px;
+    widows: 900px;
+}
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  
+  .buttonblue {background-color: #008CBA;} /* Blue */
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #008CBA;
+  }
+  
+  li {
+    float: left;
+  }
+
+  .div6{
+    border:2px solid black;
+  }
+  

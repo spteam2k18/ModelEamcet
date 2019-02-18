@@ -1,0 +1,118 @@
+<!-- <countdown [config]="{leftTime: 300}"
+    (start)="onStart()"
+    (finished)="onFinished()"
+    (notify)="onNotify($event)"></countdown> -->
+    <p style="color:red;" > Remaining Time left : 
+    <countdown [config]="{leftTime: 125, notify: [ 120, 60 ]}" (start)="onStart()" (finished)="onFinished()" (notify)="onNotify($event)">$!m!:$!s!</countdown>
+</p>
+    
+
+
+    <h1  style="color:red;" > {{done}}</h1>
+
+<div id = "idgrid">
+  <div id = "sudgrid1">
+    <!-- ------------------------- grid 1  -->
+    <div>
+        <input type="button" class="button buttonblue" value="first 60 || physics" (click)="set(0)">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="button" class="button buttonblue" value="second 60 || chemistry" (click)="set(60)">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="button" class="button buttonblue" value="last 60 || maths" (click)="set(120)">   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <br><br>
+        <ul>
+            <li><p style="color:white;" > &nbsp;&nbsp;&nbsp; Mock EAMCET By Usha Rama College of Engineering And Technology</p></li>
+          
+        </ul>
+      
+      <br><br>
+    </div>
+    <!--  ------------------------- grid 1  -->
+    <!--  ------------------------- grid 2  -->
+    <div>
+
+      <div >
+
+        
+        
+          <br><br>
+          <p style="color:rgb(21, 250, 0);" > Question Number : {{Current_Showing+1}}</p>
+          <br>
+      <img  align="center"  class="question_image" src={{question_images[Current_Showing]}}>
+      <br><br>
+      <br>
+      <form [formGroup]="form">
+        <input type="radio" formControlName="response" value="A" > Option A  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="radio" formControlName="response" value="B"> Option B   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="radio" formControlName="response" value="C"> Option C   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="radio" formControlName="response" value="D"> Option D   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      </form>
+     
+      </div>
+    </div>
+    <!--  ------------------------- grid 2  -->
+    <!--  ------------------------- grid 3  -->
+    <div>
+        <br>
+        <input type="button" class="button buttonblue" (click)="clearform()" value="Clear response" >   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="button" class="button buttonblue" (click)="mark_review()" value="Mark for review" > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <!-- save and next != 10   -->
+        <input *ngIf="Current_Showing == 9" type="button" class="button buttonblue" (click)="saveAll()" value="Submit" >   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <input *ngIf="Current_Showing != 9" type="button" class="button buttonblue" (click)="next()" value="Next" >   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input *ngIf="Current_Showing != 9" type="button" class="button buttonblue" (click)="saveandnext()" value="Save And Next" >   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <input *ngIf="Current_Showing != 0" type="button" class="button buttonblue" (click)="prev()" value="Previous Question" >   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    </div>
+    <!--  ------------------------- grid 3  -->
+  </div>
+  <div>
+    <div id = "subgrid2">
+      <!--  ------------------------- grid 4  -->
+      <div>
+
+          &nbsp;&nbsp;<img src="../../assets/profile imge.png" style="height:100px; weight:80px" >
+          <!-- <p>G.jaya krishna  </p> -->
+
+      </div>
+      <!--  ------------------------- grid 4  -->
+      <!--  ------------------------- grid 5  -->
+      <div>
+        <!-- <p>colourfull icons   </p> -->
+          &nbsp;&nbsp;<img src="data:image/png;base64,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" style="height:200px; weight:100px" >
+
+      </div>
+      <!--  ------------------------- grid 5  -->
+      <!--  ------------------------- grid 6  -->
+      <div class="div6">
+        <!-- Here clip art working with scrooling and onclick event -->
+
+          <li *ngFor="let ques of question_status; index as i">
+              <!-- {{i+1}} is :{{ ques }} -->
+              <button>{{i}}</button>
+            </li>
+            
+            <li *ngFor="let ques of question_response; index as i">
+               <p style="color: red;" > {{i+1}} is :{{ ques }}</p>
+              </li>
+            
+
+        
+      </div>
+
+      
+      <!--  ------------------------- grid 6  -->
+    </div>
+  </div>
+  </div>
+
+
+
+
+
+
+
+<!-- <p>Form value: {{ form.value | json }}</p> 
+
+<h1> ans 
+  {{user_response}}
+</h1> -->
