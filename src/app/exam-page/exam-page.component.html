@@ -4,22 +4,23 @@
     (notify)="onNotify($event)"></countdown> -->
     <!-- <h1>{{TextFile}}</h1> -->
     
-    <p style="color:red;" > Remaining Time left : 
-    <countdown [config]="{leftTime: 125, notify: [ 120, 60 ]}" (start)="onStart()" (finished)="onFinished()" (notify)="onNotify($event)">$!m!:$!s!</countdown>
-</p>
     
 
 
-    <h1  style="color:red;" > {{done}}</h1>
+    <p  style="color:red;" > {{done}}</p>
 
 <div id = "idgrid">
   <div id = "sudgrid1">
     <!-- ------------------------- grid 1  -->
     <div>
-        <input type="button" class="button buttonblue" value="first 60 || physics" (click)="set(0)">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="button" class="button buttonblue" value="second 60 || chemistry" (click)="set(60)">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="button" class="button buttonblue" value="last 60 || maths" (click)="set(120)">   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <br><br>
+        <input type="button" class="button buttonblue" value="first 30 || physics" (click)="set(0)">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="button" class="button buttonblue" value="second 30 || chemistry" (click)="set(31)">  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="button" class="button buttonblue" value="last 30 || maths" (click)="set(61)">   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        
+    <p style="color:red;" > Remaining Time left : 
+      <countdown [config]="{leftTime: 125, notify: [ 120, 60 ]}" (start)="onStart()" (finished)="onFinished()" (notify)="onNotify($event)">$!m!:$!s!</countdown>
+  </p>
         <ul>
             <li><p style="color:white;" > &nbsp;&nbsp;&nbsp; Mock EAMCET By Usha Rama College of Engineering And Technology</p></li>
           
