@@ -12,6 +12,8 @@ import { CountdownModule } from 'ngx-countdown';
 import { HomeComponent } from './home/home.component';
 import { InstructionsComponent } from './instructions/instructions.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxSpinnerModule } from 'ngx-spinner';
+// import { CandidateService } from './candidate.service';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     CountdownModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule,
+    // CandidateService
     
     
   ],
