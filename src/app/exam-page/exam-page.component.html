@@ -18,19 +18,25 @@
 
 <div class="result_bgm" *ngIf="result">
 
-    <br><br><br><br><br>
+    <br><br>
+
 
     <h1 align="center"> Your Exam Completed Successfully</h1>
     <hr>
+   
 <h1 align="center"> Your Model EAMCET score is : {{Total}}/90</h1>
 <br>
 <h3 align="center"> Thank you {{cand_name}} for your active participation in URCE Model EAMCET </h3>
+<h6 align="center">Correct Answers count : {{Correct}},&nbsp; &nbsp; Wrong Answers count : {{Wrong}}, &nbsp;&nbsp; Not Answered Quetions : {{NotAnwered}}</h6>
 
 
-<br>
-<h1 align="center"> All The Best</h1>
-
-
+<div style="display: block">
+    <canvas baseChart
+            [data]="pieChartData"
+            [labels]="pieChartLabels"
+            [chartType]="pieChartType"></canvas>
+  </div>
+  <h1 align="center"> All The Best</h1>
 
 
 <div id = "cen">
@@ -59,9 +65,9 @@
     
           <div id = "tabs">
             
-            <input type="button" class="tabbtn"  value="physics" (click)="set(0)">  
-            <input type="button" class = "tabbtn" value="chemistry" (click)="set(30)">  
-            <input type="button" class = "tabbtn" value="maths" (click)="set(60)">   
+            <input type="button" class="tabbtn"  value="Maths" (click)="set(0)">  
+            <input type="button" class = "tabbtn" value="Physics" (click)="set(15)">  
+            <input type="button" class = "tabbtn" value="Chemistry" (click)="set(30)">   
           </div>
           <div id = "type">
             Question type MCQ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   {{done}}
@@ -123,9 +129,9 @@
           
            
     
-            <input *ngIf="Current_Showing != 89" type="button" class="button buttonblue sub" (click)="next()" value="Next" >   
-            <input *ngIf="Current_Showing != 89" type="button" class="button buttonblue sub" (click)="saveandnext()" value="Save And Next" >   
-            <input  *ngIf="Current_Showing == 89" type="button" class="button1 buttonblue" (click)="save()" value="save" > 
+            <input *ngIf="Current_Showing != 44" type="button" class="button buttonblue sub" (click)="next()" value="Next" >   
+            <input *ngIf="Current_Showing != 44" type="button" class="button buttonblue sub" (click)="saveandnext()" value="Save And Next" >   
+            <input  *ngIf="Current_Showing == 44" type="button" class="button1 buttonblue" (click)="save()" value="save" > 
 
           
           </div>
