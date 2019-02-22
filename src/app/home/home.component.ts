@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   city:string="";
   constructor(private router: Router,private Service: CandidateService) { }
 
+  
   ngOnInit() {
     
   }

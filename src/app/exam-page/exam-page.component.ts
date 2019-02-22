@@ -80,6 +80,7 @@ export class ExamPageComponent implements OnInit {
   mark_review(){
      this.question_status[this.Current_Showing] = 3;   // answered successfully 
      this.Current_Showing+=1;
+     this.form.reset()
    }
 
   saveandnext()
@@ -93,21 +94,19 @@ export class ExamPageComponent implements OnInit {
   save()
   {
     this.user_response = this.form.value['response'];
-    this.form.reset();
+    // this.form.reset();
     this.question_response[this.Current_Showing] = this.user_response;
     this.question_status[this.Current_Showing] = 2;   // answered successfully 
 
   }
   next()
   {
+    this.form.reset()
     this.question_status[this.Current_Showing] = 5;   // visited the ques
-      this.Current_Showing +=1;
+      // this.Current_Showing +=1;
+      this.set(this.Current_Showing+1)
   }
-  prev()
-  {
-    this.Current_Showing -=1;
-
-  }
+  
   saveAll()
   {
       if(this.TimeOver == false)
@@ -148,6 +147,15 @@ calculate_result(){
   set(x)
   {
     this.Current_Showing = x;
+    if(this.question_status[this.Current_Showing] == 0)
+    {
+      this.form.reset();
+    }else{
+    this.form.setValue({
+      response: this.question_response[this.Current_Showing]
+    });
+  }
+    
   }
   mark_review_and_save(){
 

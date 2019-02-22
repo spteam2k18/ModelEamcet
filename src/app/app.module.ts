@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
 // import { CandidateService } from './candidate.service';
 
+import { PieChartComponent } from 'angular-d3-charts'; // this is needed!
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     ExamPageComponent,
     GridComponent,
     HomeComponent,
-    InstructionsComponent
+    InstructionsComponent,
+    PieChartComponent
+
     
   ],
   imports: [ 
@@ -33,7 +36,6 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     CountdownModule,
     HttpClientModule,
     NgxSpinnerModule,
-    // CandidateService
     
     
   ],

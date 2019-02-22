@@ -150,8 +150,8 @@
   }
   .question_image{
   
-      height: 100px;
-      widows: 900px;
+      /* height: 100px;
+      widows: 900px; */
   }
   .qnum{
       display: grid;
