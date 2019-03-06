@@ -13,6 +13,16 @@
     <p style="color: white" > Calculating Your result, please wait ..... </p>
     </ngx-spinner>
 
+    <div *ngIf="error">
+
+      <h1 align="center">Your exam  is lost due to refresh activity  </h1>
+      <br>
+      <div id = "cen">
+        <input  type="button" class="button1 buttonblue" (click)="newuser()" value="Re-login" > 
+      </div>
+      <br><br><br><br><br><br>
+    
+    </div>
 
 
 
@@ -24,7 +34,7 @@
     <h1 align="center"> Your Exam Completed Successfully</h1>
     <hr>
    
-<h1 align="center"> Your Model EAMCET score is : {{Total}}/90</h1>
+<h1 align="center"> Your Model EAMCET score is : {{Total}}/180</h1>
 <br>
 <h3 align="center"> Thank you {{cand_name}} for your active participation in URCE Model EAMCET </h3>
 <h6 align="center">Correct Answers count : {{Correct}},&nbsp; &nbsp; Wrong Answers count : {{Wrong}}, &nbsp;&nbsp; Not Answered Quetions : {{NotAnwered}}</h6>
@@ -46,8 +56,9 @@
 </div>
 
 
-<div *ngIf="!result">
+<div *ngIf="exam">
 
+    <h6>Set number : {{SetNum}}</h6>
     <div id = "idgrid">
       <div id = "sudgrid1">
         <!-- ------------------------- grid 1  -->
