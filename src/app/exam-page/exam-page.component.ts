@@ -38,13 +38,13 @@ export class ExamPageComponent implements OnInit {
   TextFile:string;
   Total=0;
   result = false;
-  cand_name = "";
-  cand_clg ="";
+  cand_name : string;
+  cand_clg :string;
   cand_phone:string;
   cand_city:string;
 
   
-  Correct: number;
+  Correct = 0 ;
   Wrong: number;
   NotAnwered: number;
 
@@ -59,6 +59,11 @@ export class ExamPageComponent implements OnInit {
   error =  false;
   exam: boolean;
   ans: string;
+  error_status = "not send";
+  college_name: string;
+  
+  address =  "not provided";
+  errormsg: any;
 
 
   constructor(private http:HttpClient,private spinner: NgxSpinnerService,private router: Router,private Service: CandidateService) {    }
@@ -71,6 +76,7 @@ export class ExamPageComponent implements OnInit {
     this.cand_clg = data[2];
     this.cand_phone = data[1];
     this.cand_city = data[3];
+    //this.college_name = data[4];
 
     console.log(this.cand_name)
     if(this.cand_name == undefined)
@@ -85,7 +91,9 @@ export class ExamPageComponent implements OnInit {
     var min=1;
     var max=6;
     this.SetNum =  Math.floor(Math.random() * (max - min + 1)) + min;
+    console.log("set num : ",this.SetNum)
 // random number generator 
+
 
 
 
@@ -118,7 +126,7 @@ export class ExamPageComponent implements OnInit {
 
    }else if(this.SetNum==3)
    {
-     this.question_images =  ['assets/3/1.JPG', 'assets/3/3.JPG', 'assets/3/5.JPG', 'assets/3/7.JPG', 'assets/3/9.JPG', 'assets/3/11.JPG', 'assets/3/13.JPG', 'assets/3/15.JPG', 'assets/3/17.JPG', 'assets/3/19.JPG', 'assets/3/21.JPG', 'assets/3/23.JPG', 'assets/3/25.JPG', 'assets/3/27.JPG', 'assets/3/29.JPG', 'assets/3/31.JPG', 'assets/3/33.JPG', 'assets/3/35.JPG', 'assets/3/37.JPG', 'assets/3/39.JPG', 'assets/3/41.JPG', 'assets/3/43.JPG', 'assets/3/45.JPG', 'assets/3/47.JPG', 'assets/3/49.JPG', 'assets/3/51.JPG', 'assets/3/53.JPG', 'assets/3/55.JPG', 'assets/3/57.JPG', 'assets/3/59.JPG', 'assets/3/61.JPG', 'assets/3/63.JPG', 'assets/3/65.JPG', 'assets/3/67.JPG', 'assets/3/69.JPG', 'assets/3/71.JPG', 'assets/3/73.JPG', 'assets/3/75.JPG', 'assets/3/77.JPG', 'assets/3/79.JPG', 'assets/3/81.JPG', 'assets/3/83.JPG', 'assets/3/85.JPG', 'assets/3/87.JPG', 'assets/3/89.JPG']
+    this.question_images  = ['assets/3/2.JPG', 'assets/3/4.JPG', 'assets/3/6.JPG', 'assets/3/8.JPG', 'assets/3/10.JPG', 'assets/3/12.JPG', 'assets/3/14.JPG', 'assets/3/16.JPG', 'assets/3/18.JPG', 'assets/3/20.JPG', 'assets/3/22.JPG', 'assets/3/24.JPG', 'assets/3/26.JPG', 'assets/3/28.JPG', 'assets/3/30.JPG', 'assets/3/32.JPG', 'assets/3/34.JPG', 'assets/3/36.JPG', 'assets/3/38.JPG', 'assets/3/40.JPG', 'assets/3/42.JPG', 'assets/3/44.JPG', 'assets/3/46.JPG', 'assets/3/48.JPG', 'assets/3/50.JPG', 'assets/3/52.JPG', 'assets/3/54.JPG', 'assets/3/56.JPG', 'assets/3/58.JPG', 'assets/3/60.JPG', 'assets/3/62.JPG', 'assets/3/64.JPG', 'assets/3/66.JPG', 'assets/3/68.JPG', 'assets/3/70.JPG', 'assets/3/72.JPG', 'assets/3/74.JPG', 'assets/3/76.JPG', 'assets/3/78.JPG', 'assets/3/80.JPG', 'assets/3/82.JPG', 'assets/3/84.JPG', 'assets/3/86.JPG', 'assets/3/88.JPG', 'assets/3/90.JPG']
 
    }else if(this.SetNum==4)
    {
@@ -126,7 +134,7 @@ export class ExamPageComponent implements OnInit {
 
    }else if(this.SetNum==5)
    {
-    this.question_images = ['assets/5/1.JPG', 'assets/5/3.JPG', 'assets/5/5.JPG', 'assets/5/7.JPG', 'assets/5/9.JPG', 'assets/5/11.JPG', 'assets/5/13.JPG', 'assets/5/15.JPG', 'assets/5/17.JPG', 'assets/5/19.JPG', 'assets/5/21.JPG', 'assets/5/23.JPG', 'assets/5/25.JPG', 'assets/5/27.JPG', 'assets/5/29.JPG', 'assets/5/31.JPG', 'assets/5/33.JPG', 'assets/5/35.JPG', 'assets/5/37.JPG', 'assets/5/39.JPG', 'assets/5/41.JPG', 'assets/5/43.JPG', 'assets/5/45.JPG', 'assets/5/47.JPG', 'assets/5/49.JPG', 'assets/5/51.JPG', 'assets/5/53.JPG', 'assets/5/55.JPG', 'assets/5/57.JPG', 'assets/5/59.JPG', 'assets/5/61.JPG', 'assets/5/63.JPG', 'assets/5/65.JPG', 'assets/5/67.JPG', 'assets/5/69.JPG', 'assets/5/71.JPG', 'assets/5/73.JPG', 'assets/5/75.JPG', 'assets/5/77.JPG', 'assets/5/79.JPG', 'assets/5/81.JPG', 'assets/5/83.JPG', 'assets/5/85.JPG', 'assets/5/87.JPG', 'assets/5/89.JPG']
+    this.question_images  = ['assets/5/2.JPG', 'assets/5/4.JPG', 'assets/5/6.JPG', 'assets/5/8.JPG', 'assets/5/10.JPG', 'assets/5/12.JPG', 'assets/5/14.JPG', 'assets/5/16.JPG', 'assets/5/18.JPG', 'assets/5/20.JPG', 'assets/5/22.JPG', 'assets/5/24.JPG', 'assets/5/26.JPG', 'assets/5/28.JPG', 'assets/5/30.JPG', 'assets/5/32.JPG', 'assets/5/34.JPG', 'assets/5/36.JPG', 'assets/5/38.JPG', 'assets/5/40.JPG', 'assets/5/42.JPG', 'assets/5/44.JPG', 'assets/5/46.JPG', 'assets/5/48.JPG', 'assets/5/50.JPG', 'assets/5/52.JPG', 'assets/5/54.JPG', 'assets/5/56.JPG', 'assets/5/58.JPG', 'assets/5/60.JPG', 'assets/5/62.JPG', 'assets/5/64.JPG', 'assets/5/66.JPG', 'assets/5/68.JPG', 'assets/5/70.JPG', 'assets/5/72.JPG', 'assets/5/74.JPG', 'assets/5/76.JPG', 'assets/5/78.JPG', 'assets/5/80.JPG', 'assets/5/82.JPG', 'assets/5/84.JPG', 'assets/5/86.JPG', 'assets/5/88.JPG', 'assets/5/90.JPG']
 
    }else if(this.SetNum==6)
    {
@@ -207,6 +215,8 @@ calculate_result(){
       }
   }
 
+ 
+
   this.Total = this.Correct*4;
   this.Total = this.Total - (this.Wrong);
 
@@ -219,12 +229,14 @@ calculate_result(){
 
   this.exam=false;
 
-
-  
+  this.post();
   
  
   
 }
+
+
+
   
   set(x)
   {
@@ -274,5 +286,36 @@ calculate_result(){
     event.returnValue = false;
 }
 
+post()
+{
+  
+  var marks = ""
+  marks = this.Total.toString();
+    console.log(this.cand_name,this.cand_phone,this.address,this.cand_clg,this.cand_city)
+
+  this.http.post("http://10.1.1.181:3000/api/urModels",
+  {
+  "stuName": this.cand_name,
+  "PhoneNo": this.cand_phone,
+  "address": this.address,
+  "collogeName": this.cand_clg,
+  "city": this.cand_city,
+  "marks": marks
+
+    
+  }) .subscribe(
+    data => {
+      this.spinner.hide();
+      this.error_status = "Done"
+
+    },
+    error => {
+      this.spinner.hide();
+      console.log("Error", error);
+        this.error_status ="DB not found "
+        this.errormsg = error;
+        return false;
+    });
+}
  
 }

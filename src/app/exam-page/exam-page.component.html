@@ -2,6 +2,10 @@
     (start)="onStart()"
     (finished)="onFinished()"
     (notify)="onNotify($event)"></countdown> -->
+
+
+  
+
     <ngx-spinner
     bdOpacity = 0.9
     bdColor = "rgba(78,75,75,0.9)"
@@ -39,6 +43,7 @@
 <h3 align="center"> Thank you {{cand_name}} for your active participation in URCE Model EAMCET </h3>
 <h6 align="center">Correct Answers count : {{Correct}},&nbsp; &nbsp; Wrong Answers count : {{Wrong}}, &nbsp;&nbsp; Not Answered Quetions : {{NotAnwered}}</h6>
 
+<p>{{error_status}}</p>
 
 <div style="display: block">
     <canvas baseChart
@@ -58,7 +63,7 @@
 
 <div *ngIf="exam">
 
-    <h6>Set number : {{SetNum}}</h6>
+    <!-- <h6>Set number : {{SetNum}}</h6> -->
     <div id = "idgrid">
       <div id = "sudgrid1">
         <!-- ------------------------- grid 1  -->
